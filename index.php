@@ -17,7 +17,21 @@
 			<header id="header">
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1><strong>I am Elito</strong>, a super simple<br />
+					<h1><strong>I am <?php
+// Connexion à la base de données
+$conn = pg_connect("host=localhost port=5432 dbname=katsaka user=postgres password=noob");
+// Exécution de la requête pour obtenir le nom de la table
+$query = "SELECT nom from responsable where id=1";
+$result = pg_query($conn, $query);
+// Parcours des résultats
+while ($row = pg_fetch_row($result)) {
+    $name = $row[0];
+}
+echo $name;
+// Fermeture de la connexion à la base de données
+pg_close($conn);
+?>
+</strong>, a super simple<br />
 					responsive site template freebie<br />
 					crafted by <a href="http://html5up.net">HTML5 UP</a>.</h1>
 				</div>
